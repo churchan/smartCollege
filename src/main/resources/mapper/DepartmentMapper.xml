@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.tfswufe.mapper.DepartmentMapper">
+
+	<sql id="Base_Column_List">
+		id, department_number, name, manager, telephone, address, notes
+	</sql>
+
+	<select id="selectByNumber" parameterType="java.lang.Integer" resultType="edu.tfswufe.entity.Department">
+		select
+		<include refid="Base_Column_List" />
+		from department
+		where department_number = #{departmentNumber}
+	</select>
+
+	<select id="selectMaxNum" resultType="Integer">
+		select
+		max(department_number) as department_number
+		from department
+	</select>
+
+
+
+</mapper>
