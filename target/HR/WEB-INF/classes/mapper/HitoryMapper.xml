@@ -4,7 +4,7 @@
 <mapper namespace="edu.tfswufe.mapper.HistoryMapper">
 
 	<sql id="Base_Column_List">
-		id, employee_number, name, gender, birthday, telephone, email, address, photo,
+		id, personnel_number, name, gender, birthday, telephone, email, address, photo,
 		education, in_time, out_time, department_number, position_number, status, home,
 		notes
 	</sql>
@@ -20,11 +20,11 @@
 		select
 		<include refid="Base_Column_List" />
 		from history
-		where employee_number = #{employeeNumber}
+		where personnel_number = #{personnelNumber}
 	</select>
 
 	<select id="selectMaxEmpnum" resultType="String">
-		select max(employee_number) as number from history
+		select max(personnel_number) as number from history
 	</select>
 
 </mapper>

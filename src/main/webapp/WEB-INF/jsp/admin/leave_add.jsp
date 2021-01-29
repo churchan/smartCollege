@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.tfswufe.entity.*" %>
-<%@ page import="edu.tfswufe.entity.Employee" %>
+<%@ page import="edu.tfswufe.entity.Personnel" %>
 <% String path = request.getContextPath(); %>
 <!DOCTYPE>
 <html>
@@ -33,14 +33,14 @@
 						<h5>申请请假</h5>
 					</div>
 					<div class="ibox-content">
-						<% Employee employee = (Employee)session.getAttribute("loged");%>
+						<% Personnel personnel = (Personnel)session.getAttribute("loged");%>
 						<form method="post" class="form-horizontal" id="commentForm"
-							action="<%=path %>/leave/add.do?employeeNumber=<%=employee.getEmployeeNumber() %>">
+							action="<%=path %>/leave/add.do?personnelNumber=<%=personnel.getPersonnelNumber() %>">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">姓名：</label>
 
 								<div class="col-sm-7">
-									<p class="form-control-static"><%=employee.getName() %></p>
+									<p class="form-control-static"><%=personnel.getName() %></p>
 								</div>
 							</div>
 							<div class="form-group">

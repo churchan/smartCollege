@@ -34,12 +34,12 @@
 						<h5>添加员工</h5>
 					</div>
 					<div class="ibox-content">
-						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/employee/add.do">
+						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/personnel/add.do">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">工号</label>
 								<div class="col-sm-7">
-									<% Integer employeeNumber = (Integer)request.getAttribute("employeeNumber"); %>
-									<input type="text" class="form-control" name="employeeNumber" value="<%=employeeNumber %>" readonly="readonly">
+									<% Integer personnelNumber = (Integer)request.getAttribute("personnelNumber"); %>
+									<input type="text" class="form-control" name="personnelNumber" value="<%=personnelNumber %>" readonly="readonly">
 								</div>
 							</div>
 							<div class="form-group">

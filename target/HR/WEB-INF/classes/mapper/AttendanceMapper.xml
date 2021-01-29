@@ -4,7 +4,7 @@
 <mapper namespace="edu.tfswufe.mapper.AttendanceMapper">
 
 	<sql id="Base_Column_List">
-		id, employee_number, day, time_type, start_time, start_type, end_time,
+		id, personnel_number, day, time_type, start_time, start_type, end_time,
 		end_type, work_type, notes
 
 	</sql>
@@ -13,7 +13,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from attendance
-		where employee_number = #{employeeNumber}
+		where personnel_number = #{personnelNumber}
 		and day = #{day} and time_type = #{timeType}
 	</select>
 

@@ -8,19 +8,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-import edu.tfswufe.entity.Employee;
-import edu.tfswufe.service.EmployeeService;
+import edu.tfswufe.entity.Personnel;
+import edu.tfswufe.service.PersonnelService;
 
-public class EmployeeTest {
+public class PersonnelTest {
 
 	@SuppressWarnings("resource")
 	@Test
 	public void lognTest(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		Employee employee = eService.checkLogin(1001, "1001");
-		System.out.println(employee.toString());
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		Personnel personnel = eService.checkLogin(1001, "1001");
+		System.out.println(personnel.toString());
 	}
 
 	@SuppressWarnings("resource")
@@ -28,9 +28,9 @@ public class EmployeeTest {
 	public void selectListTest(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		List<Employee> eList = eService.selectList();
-		for(Employee e : eList){
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		List<Personnel> eList = eService.selectList();
+		for(Personnel e : eList){
 			System.out.println(e.toString());
 		}
 	}
@@ -40,9 +40,9 @@ public class EmployeeTest {
 	public void selectById(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		Employee employee = eService.selectEmployee(1);
-		System.out.println(employee.getDepartment());
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		Personnel personnel = eService.selectPersonnel(1);
+		System.out.println(personnel.getDepartment());
 	}
 
 	@SuppressWarnings("resource")
@@ -50,10 +50,10 @@ public class EmployeeTest {
 	public void selectListPageTest(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		Page<Employee> page = eService.selectListByPage(1);
-		List<Employee> eList = page.getRecords();
-		for(Employee e : eList){
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		Page<Personnel> page = eService.selectListByPage(1);
+		List<Personnel> eList = page.getRecords();
+		for(Personnel e : eList){
 			System.out.println(e.toString());
 		}
 	}
@@ -63,11 +63,11 @@ public class EmployeeTest {
 	public void update(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		Employee employee = new Employee();
-		employee.setId(5);
-		employee.setName("杨姐姐");
-		if (eService.updateById(employee)) {
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		Personnel personnel = new Personnel();
+		personnel.setId(5);
+		personnel.setName("杨姐姐");
+		if (eService.updateById(personnel)) {
 			System.out.println("成功");
 		}
 	}
@@ -77,10 +77,10 @@ public class EmployeeTest {
 	public void select(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		List<Employee> list = eService.select(1002, "1002");
-		for(Employee employee : list){
-			System.out.println(employee.toString());
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		List<Personnel> list = eService.select(1002, "1002");
+		for(Personnel personnel : list){
+			System.out.println(personnel.toString());
 		}
 	}
 
@@ -89,13 +89,13 @@ public class EmployeeTest {
 	public void add(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		Employee employee = new Employee();
-		employee.setEmployeeNumber(1005);
-		employee.setName("杨杰");
-		employee.setGender("男");
-		employee.setPassword("1005");
-		if (eService.addEmployee(employee)) {
+		personnelService eService = (personnelService) context.getBean("personnelService");
+		Personnel personnel = new personnel();
+		personnel.setPersonnelNumber(1005);
+		personnel.setName("杨杰");
+		personnel.setGender("男");
+		personnel.setPassword("1005");
+		if (eService.addpersonnel(personnel)) {
 			System.out.println("成功");
 		}
 	}*/
@@ -105,7 +105,7 @@ public class EmployeeTest {
 	public void delete(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
 		if (eService.deleteById(5)) {
 			System.out.println("成功");
 		}
@@ -116,7 +116,7 @@ public class EmployeeTest {
 	public void test(){
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-		EmployeeService eService = (EmployeeService) context.getBean("employeeService");
-		eService.deleteEmployee(19);
+		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
+		eService.deletepersonnel(19);
 	}
 }

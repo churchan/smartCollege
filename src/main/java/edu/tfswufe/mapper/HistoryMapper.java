@@ -19,10 +19,10 @@ public interface HistoryMapper extends BaseMapper<History>{
 
 	/**
 	 * 根据员工的工号查询信息
-	 * @param employeeNumber
+	 * @param personnelNumber
 	 * @return
 	 */
-	History selectByNumber(Integer employeeNumber);
+	History selectByNumber(Integer personnelNumber);
 
 	String selectMaxEmpnum();
 }

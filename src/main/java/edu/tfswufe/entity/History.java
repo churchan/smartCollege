@@ -20,7 +20,7 @@ public class History extends Model<History> implements Serializable{
 
 	@TableId
 	private Integer id;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private String name;
 	private String gender;
 	private Date birthday;
@@ -48,11 +48,11 @@ public class History extends Model<History> implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public String getName() {
 		return name;

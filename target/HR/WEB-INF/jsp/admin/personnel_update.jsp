@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.tfswufe.entity.*" %>
-<%@ page import="edu.tfswufe.entity.Employee" %>
+<%@ page import="edu.tfswufe.entity.Personnel" %>
 <%@ page import="edu.tfswufe.entity.Position" %>
 <%@ page import="edu.tfswufe.entity.Department" %>
 <% String path = request.getContextPath(); %>
@@ -36,24 +36,24 @@
 						<h5>修改在职员工信息</h5>
 					</div>
 					<div class="ibox-content">
-						<% Employee employee = (Employee)request.getAttribute("employee"); %>
-						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/employee/<%=employee.getId() %>/update.do">
+						<% Personnel personnel = (Personnel)request.getAttribute("personnel"); %>
+						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/personnel/<%=personnel.getId() %>/update.do">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">工号</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="employeeNumber" value="<%=employee.getEmployeeNumber() %>" readonly="readonly">
+									<input type="text" class="form-control" name="personnelNumber" value="<%=personnel.getPersonnelNumber() %>" readonly="readonly">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">姓名</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="name" value="<%=employee.getName() %>" minlength="2" required>
+									<input type="text" class="form-control" name="name" value="<%=personnel.getName() %>" minlength="2" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">密码</label>
 								<div class="col-sm-7">
-									<input type="password" class="form-control" name="password" value="<%=employee.getPassword() %>" minlength="4" required>
+									<input type="password" class="form-control" name="password" value="<%=personnel.getPassword() %>" minlength="4" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -63,7 +63,7 @@
                                         <label>
                                             <input type="radio" value="男" name="gender"
                                             <%
-												if(employee.getGender().equals("男")){
+												if(personnel.getGender().equals("男")){
 											%>
 												checked="checked"
 											<%  } %>
@@ -72,7 +72,7 @@
                                         <label>
                                             <input type="radio" value="女" name="gender"
                                             <%
-												if(employee.getGender().equals("女")){
+												if(personnel.getGender().equals("女")){
 											%>
 												checked="checked"
 											<%  } %>
@@ -83,32 +83,32 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">出生年月</label>
 								<div class="col-sm-7">
-									<% String birthday = MTimeUtil.dateFormat(employee.getBirthday()); %>
+									<% String birthday = MTimeUtil.dateFormat(personnel.getBirthday()); %>
 									<input type="date" class="form-control" name="date" value="<%=birthday %>" >
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" >联系方式</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="telephone" value="<%=employee.getTelephone() %>">
+									<input type="text" class="form-control" name="telephone" value="<%=personnel.getTelephone() %>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">邮箱</label>
 								<div class="col-sm-7" >
-									<input type="text" class="form-control" placeholder="" name="email" value="<%=employee.getEmail() %>" email="true">
+									<input type="text" class="form-control" placeholder="" name="email" value="<%=personnel.getEmail() %>" email="true">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">籍贯</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="address" value="<%=employee.getAddress() %>">
+									<input type="text" class="form-control" name="address" value="<%=personnel.getAddress() %>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">学历</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="education" value="<%=employee.getEducation() %>">
+									<input type="text" class="form-control" name="education" value="<%=personnel.getEducation() %>">
 								</div>
 							</div>
 							<div class="form-group">
@@ -122,7 +122,7 @@
 									%>
 										<option value="<%=department.getDepartmentNumber() %>"
 										<%
-											if(employee.getDepartmentNumber().equals(department.getDepartmentNumber())){
+											if(personnel.getDepartmentNumber().equals(department.getDepartmentNumber())){
 										%>
 											selected="selected"
 										<%  }  %>
@@ -142,7 +142,7 @@
 										%>
 											<option value="<%=position.getPositionNumber() %>"
 											<%
-												if(employee.getPositionNumber().equals(position.getPositionNumber())){
+												if(personnel.getPositionNumber().equals(position.getPositionNumber())){
 											%>
 												selected="selected"
 											<%	}  %>
@@ -164,14 +164,14 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">备注</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="notes" value="<%=employee.getNotes() %>">
+									<input type="text" class="form-control" name="notes" value="<%=personnel.getNotes() %>">
 								</div>
 							</div>
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
 								<div class="col-sm-4 col-sm-offset-8">
 									<button class="btn btn-primary" type="submit">修&nbsp;&nbsp;改</button>&nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="<%=path %>/employee/listPage.do?pageNo=1" class="btn btn-info">返&nbsp;&nbsp;回</a>
+									<a href="<%=path %>/personnel/listPage.do?pageNo=1" class="btn btn-info">返&nbsp;&nbsp;回</a>
 								</div>
 							</div>
 						</form>

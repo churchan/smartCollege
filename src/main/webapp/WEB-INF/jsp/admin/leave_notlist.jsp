@@ -55,7 +55,7 @@
                             %>
 								<tr class="gradeA">
 									<td><%=index++ %></td>
-									<td><%=leave.getEmployee().getName() %></td>
+									<td><%=leave.getPersonnel().getName() %></td>
 								<%
 									String starttime = MTimeUtil.dateFormat(leave.getStartTime());
 									String endtime = MTimeUtil.dateFormat(leave.getStartTime());

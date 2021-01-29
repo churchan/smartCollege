@@ -20,7 +20,7 @@ public class Leave extends Model<Leave> implements Serializable{
 
 	@TableId
 	private Integer id;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private Integer departmentNumber;
 	private Date startTime;
 	private Date endTime;
@@ -32,7 +32,7 @@ public class Leave extends Model<Leave> implements Serializable{
 	private String notes;
 
 	@TableField(exist=false)
-	private Employee employee;
+	private Personnel personnel;
 	@TableField(exist=false)
 	private Department department;
 
@@ -42,11 +42,11 @@ public class Leave extends Model<Leave> implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public Date getStartTime() {
 		return startTime;
@@ -102,11 +102,11 @@ public class Leave extends Model<Leave> implements Serializable{
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public Personnel getPersonnel() {
+		return personnel;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setPersonnel(Personnel personnel) {
+		this.personnel = personnel;
 	}
 	public Department getDepartment() {
 		return department;

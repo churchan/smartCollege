@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.tfswufe.entity.*" %>
-<%@ page import="edu.tfswufe.entity.Employee" %>
+<%@ page import="edu.tfswufe.entity.Personnel" %>
 <%@ page import="edu.tfswufe.entity.Overtime" %>
 <%@ page import="edu.tfswufe.entity.Department" %>
 <% String path = request.getContextPath(); %>
@@ -66,21 +66,21 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">员工</label>
 								<div class="col-sm-7">
-									<select class="form-control m-b" id="employee" name="employeeNumber" size="1" required>
+									<select class="form-control m-b" id="personnel" name="personnelNumber" size="1" required>
 										<option value="">--请选择员工--</option>
 										<%
-											List<Employee> eList = (List<Employee>) request.getAttribute("eList");
-											for(Employee employee : eList){
+											List<personnel> eList = (List<personnel>) request.getAttribute("eList");
+											for(Personnel personnel : eList){
 
 										%>
-											<option value="<%=employee.getEmployeeNumber() %>"
+											<option value="<%=personnel.getPersonnelNumber() %>"
 											<%
-												if(overtime.getEmployeeNumber().equals(employee.getEmployeeNumber())){
+												if(overtime.getPersonnelNumber().equals(personnel.getPersonnelNumber())){
 											%>
 												selected="selected"
 											<%  }  %>
 											>
-												<%=employee.getName() %>
+												<%=personnel.getName() %>
 											</option>
 										<%
 											}

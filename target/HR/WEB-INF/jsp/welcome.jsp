@@ -1,4 +1,4 @@
-<%@page import="edu.tfswufe.entity.Employee"%>
+<%@page import="edu.tfswufe.entity.Personnel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
@@ -32,15 +32,15 @@
               <div class="jumbotron">
               	<div style="margin-left: 250px">
                     <p>&nbsp;</p>
-					<%Employee employee = (Employee)session.getAttribute("loged"); %>
-					<h1>你好，<%=employee.getName() %></h1>
+					<%Personnel personnel = (Personnel)session.getAttribute("loged"); %>
+					<h1>你好，<%=personnel.getName() %></h1>
 					<p>&nbsp;</p>
 					<p>欢迎登录天府学院智慧管理系统</p>
 					<p id="time">&nbsp;</p>
 					<p>&nbsp;</p>
-					<p><a href="<%=path %>/attendance/addStart.do?employeeNumber=<%=employee.getEmployeeNumber() %>"
+					<p><a href="<%=path %>/attendance/addStart.do?personnelNumber=<%=personnel.getPersonnelNumber() %>"
 							class="btn btn-info btn-lg">&nbsp;上班签到&nbsp;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						<a href="<%=path %>/attendance/addEnd.do?employeeNumber=<%=employee.getEmployeeNumber() %>"
+						<a href="<%=path %>/attendance/addEnd.do?personnelNumber=<%=personnel.getPersonnelNumber() %>"
 							class="btn btn-info btn-lg">&nbsp;下班签到&nbsp;</a>
 					</p>
 					<p>&nbsp;</p>

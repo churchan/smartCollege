@@ -13,14 +13,14 @@ import com.baomidou.mybatisplus.annotations.TableName;
  * @author ZHT
  *
  */
-@TableName("employee")
-public class Employee extends Model<Employee> implements Serializable{
+@TableName("personnel")
+public class Personnel extends Model<Personnel> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@TableId
 	private Integer id;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private String name;
 	private String gender;
 	private Date birthday;
@@ -46,11 +46,11 @@ public class Employee extends Model<Employee> implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public String getName() {
 		return name;
@@ -150,7 +150,7 @@ public class Employee extends Model<Employee> implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", employeeNumber=" + employeeNumber + ", name=" + name + ", gender=" + gender
+		return "personnel [id=" + id + ", personnelNumber=" + personnelNumber + ", name=" + name + ", gender=" + gender
 				+ ", birthday=" + birthday + ", telephone=" + telephone + ", email=" + email + ", address=" + address
 				+ ", photo=" + photo + ", education=" + education + ", departmentNumber=" + departmentNumber
 				+ ", positionNumber=" + positionNumber + ", inTime=" + inTime + ", password=" + password + ", notes="

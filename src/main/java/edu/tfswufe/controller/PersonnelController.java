@@ -5,11 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import edu.tfswufe.entity.Department;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.History;
 import edu.tfswufe.entity.Position;
 import edu.tfswufe.service.DepartmentService;
-import edu.tfswufe.service.EmployeeService;
+import edu.tfswufe.service.PersonnelService;
 import edu.tfswufe.service.HistoryService;
 import edu.tfswufe.service.PositionService;
 import edu.tfswufe.util.MTimeUtil;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.baomidou.mybatisplus.plugins.Page;
 
 @Controller
-@RequestMapping("/employee")
-public class EmployeeController {
+@RequestMapping("/personnel")
+public class PersonnelController {
 
 	@Autowired
-	private EmployeeService employeeService;
+	private PersonnelService personnelService;
 	@Autowired
 	private DepartmentService departmentService;
 	@Autowired
@@ -40,12 +40,12 @@ public class EmployeeController {
 	}
 
 	@RequestMapping("/checkLogin.do")
-	public String checkLogin(HttpSession session, Employee employee){
-		Employee employee2 = employeeService.checkLogin(employee.getEmployeeNumber(),
-				employee.getPassword());
-		if (employee2 != null) {
-			session.setAttribute("loged", employee2);
-			String level = employee2.getPosition().getLevel();
+	public String checkLogin(HttpSession session, Personnel personnel){
+		Personnel personnel2 = personnelService.checkLogin(personnel.getPersonnelNumber(),
+				personnel.getPassword());
+		if (personnel2 != null) {
+			session.setAttribute("loged", personnel2);
+			String level = personnel2.getPosition().getLevel();
 			if (level.equals("人事部主任")) {
 				return "admin/index1";
 			}else if (level.equals("人事部员工")) {
@@ -67,87 +67,87 @@ public class EmployeeController {
 
 	@RequestMapping("/listPage.do")
 	public String selectList(Model model, int pageNo){
-		Page<Employee> page = employeeService.selectListByPage(pageNo);
+		Page<Personnel> page = personnelService.selectListByPage(pageNo);
 		model.addAttribute("page", page);
-		return "admin/employee_list";
+		return "admin/personnel_list";
 	}
 
 	@RequestMapping("/{id}/detial.do")
-	public String selectEmployee(@PathVariable Integer id, Model model){
-		Employee employee = employeeService.selectEmployee(id);
-		model.addAttribute("employee", employee);
-		return "admin/employee_detail";
+	public String selectPersonnel(@PathVariable Integer id, Model model){
+		Personnel personnel = personnelService.selectPersonnel(id);
+		model.addAttribute("personnel", personnel);
+		return "admin/personnel_detail";
 	}
 
 	@RequestMapping("/toAdd.do")
 	public String toAdd(Model model){
 		List<History> eList = historyService.selectList();
-		String employeeNumber=historyService.selectMaxEmpnum();
-		int i = Integer.parseInt( employeeNumber );
-		System.out.println(employeeNumber);
-		model.addAttribute("employeeNumber",i+1);
+		String personnelNumber=historyService.selectMaxEmpnum();
+		int i = Integer.parseInt( personnelNumber );
+		System.out.println(personnelNumber);
+		model.addAttribute("personnelNumber",i+1);
 		List<Department> dList = departmentService.selectList();
 		model.addAttribute("dList", dList);
 		List<Position> pList = positionService.selectList();
 		model.addAttribute("pList", pList);
-		return "admin/employee_add";
+		return "admin/personnel_add";
 	}
 
 	@RequestMapping("/add.do")
-	public String add(Employee employee, String date) {
-		employee.setBirthday(MTimeUtil.stringParse(date));
-		employeeService.addEmployee(employee);
-		return "forward:/employee/listPage.do?pageNo=1";
+	public String add(Personnel personnel, String date) {
+		personnel.setBirthday(MTimeUtil.stringParse(date));
+		personnelService.addPersonnel(personnel);
+		return "forward:/personnel/listPage.do?pageNo=1";
 	}
 
 	@RequestMapping("/{id}/toUpdate.do")
 	public String toUpdate(Model model, @PathVariable Integer id){
-		Employee employee = employeeService.selectEmployee(id);
-		model.addAttribute("employee", employee);
+		Personnel personnel = personnelService.selectPersonnel(id);
+		model.addAttribute("personnel", personnel);
 		List<Department> dList = departmentService.selectList();
 		model.addAttribute("dList", dList);
 		List<Position> pList = positionService.selectList();
 		model.addAttribute("pList", pList);
-		return "admin/employee_update";
+		return "admin/personnel_update";
 	}
 
 	@RequestMapping("/{id}/update.do")
-	public String updateById( @PathVariable Integer id, Employee employee, String date, String status,
+	public String updateById( @PathVariable Integer id, Personnel personnel, String date, String status,
 			HttpSession session){
-		employee.setId(id);
-		employee.setBirthday(MTimeUtil.stringParse(date));
+		personnel.setId(id);
+		personnel.setBirthday(MTimeUtil.stringParse(date));
 		//得到操作人员的名字
-		Employee employee2 = (Employee) session.getAttribute("loged");
-		if("admin".equals(employee2.getName())) {
+		Personnel personnel2 = (Personnel) session.getAttribute("loged");
+		if("admin".equals(personnel2.getName())) {
 			status="在职";
 		}
-		employeeService.updateEmployee(employee, status, employee2.getName());
-		return "forward:/employee/listPage.do?pageNo=1";
+		personnelService.updatepersonnel(personnel, status, personnel2.getName());
+		return "forward:/personnel/listPage.do?pageNo=1";
 	}
 
 	@RequestMapping("/{id}/delete.do")
 	public String deleteById(@PathVariable Integer id){
-		employeeService.deleteEmployee(id);
-		return "forward:/employee/listPage.do?pageNo=1";
+		personnelService.deletepersonnel(id);
+		return "forward:/personnel/listPage.do?pageNo=1";
 	}
 
 	@RequestMapping("/oneself/{id}/detial.do")
-	public String selectEmployee2(@PathVariable Integer id, Model model){
-		Employee employee = employeeService.selectEmployee(id);
-		model.addAttribute("employee", employee);
+	public String selectPersonnel2(@PathVariable Integer id, Model model){
+		Personnel personnel = personnelService.selectPersonnel(id);
+		model.addAttribute("personnel", personnel);
 		return "admin/oneself_detail";
 	}
 
 	@RequestMapping("/oneself/{id}/toUpdate.do")
 	public String toUpdate2(Model model, @PathVariable Integer id){
-		Employee employee = employeeService.selectEmployee(id);
-		model.addAttribute("employee", employee);
+		Personnel personnel = personnelService.selectPersonnel(id);
+		model.addAttribute("personnel", personnel);
 		return "admin/oneself_update";
 	}
 
 	@RequestMapping("/search")
 	public String search(Model model, String input, int pageNo){
-		Page<Employee> page = employeeService.search(input, pageNo);
+		Page<Personnel> page = personnelService.search(input, pageNo);
 		model.addAttribute("page", page);
 		return "admin/search_result";
 	}

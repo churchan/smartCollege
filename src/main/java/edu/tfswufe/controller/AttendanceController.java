@@ -18,14 +18,14 @@ public class AttendanceController {
 	private AttendanceService attendanceService;
 
 	@RequestMapping("/addStart.do")
-	public String addStart(Integer employeeNumber){
-		attendanceService.addStart(employeeNumber);
+	public String addStart(Integer personnelNumber){
+		attendanceService.addStart(personnelNumber);
 		return "welcome";
 	}
 
 	@RequestMapping("/addEnd.do")
-	public String addEnd(Integer employeeNumber){
-		attendanceService.addEnd(employeeNumber);
+	public String addEnd(Integer personnelNumber){
+		attendanceService.addEnd(personnelNumber);
 		return "welcome";
 	}
 
@@ -36,9 +36,9 @@ public class AttendanceController {
 		return "admin/attendance_list";
 	}
 
-	@RequestMapping("/{employeeNumber}/oneself.do")
-	public String select(Model model, @PathVariable Integer employeeNumber){
-		List<Attendance> list = attendanceService.selectByEmployee(employeeNumber);
+	@RequestMapping("/{personnelNumber}/oneself.do")
+	public String select(Model model, @PathVariable Integer personnelNumber){
+		List<Attendance> list = attendanceService.selectBypersonnel(personnelNumber);
 		model.addAttribute("aList",list);
 		return "admin/oneself_attendance";
 	}

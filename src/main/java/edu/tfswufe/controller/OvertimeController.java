@@ -3,10 +3,10 @@ package edu.tfswufe.controller;
 import java.util.List;
 
 import edu.tfswufe.entity.Department;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.Overtime;
 import edu.tfswufe.service.DepartmentService;
-import edu.tfswufe.service.EmployeeService;
+import edu.tfswufe.service.PersonnelService;
 import edu.tfswufe.service.OvertimeService;
 import edu.tfswufe.util.MTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class OvertimeController {
 	@Autowired
 	private OvertimeService overtimeService;
 	@Autowired
-	private EmployeeService employeeService;
+	private PersonnelService personnelService;
 	@Autowired
 	private DepartmentService departmentService;
 
@@ -41,7 +41,7 @@ public class OvertimeController {
 		List<Department> dList = departmentService.selectList();
 		model.addAttribute("dList", dList);
 		//查询出所有的员工
-		List<Employee> eList = employeeService.selectList();
+		List<Personnel> eList = personnelService.selectList();
 		model.addAttribute("eList", eList );
 		return "admin/overtime_add";
 	}
@@ -62,7 +62,7 @@ public class OvertimeController {
 		List<Department> dList = departmentService.selectList();
 		model.addAttribute("dList", dList);
 		//查询出所有的员工
-		List<Employee> eList = employeeService.selectList();
+		List<Personnel> eList = personnelService.selectList();
 		model.addAttribute("eList", eList );
 		return "admin/overtime_update";
 	}
@@ -81,9 +81,9 @@ public class OvertimeController {
 		return "forward:/overtime/listPage.do?pageNo=1";
 	}
 
-	@RequestMapping("/{employeeNumber}/oneself.do")
-	public String select(Model model, @PathVariable Integer employeeNumber, int pageNo){
-		Page<Overtime> page = overtimeService.selectByEmployee(pageNo, employeeNumber);
+	@RequestMapping("/{personnelNumber}/oneself.do")
+	public String select(Model model, @PathVariable Integer personnelNumber, int pageNo){
+		Page<Overtime> page = overtimeService.selectBypersonnel(pageNo, personnelNumber);
 		model.addAttribute("page",page);
 		return "admin/oneself_overtime";
 	}

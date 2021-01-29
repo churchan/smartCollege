@@ -2,9 +2,9 @@ package edu.tfswufe.controller;
 
 import java.util.List;
 
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.History;
-import edu.tfswufe.service.EmployeeService;
+import edu.tfswufe.service.PersonnelService;
 import edu.tfswufe.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class HistoryController {
 	@Autowired
 	private HistoryService historyService;
 	@Autowired
-	private EmployeeService employeeService;
+	private PersonnelService personnelService;
 
 	@RequestMapping("/retireListPage.do")
 	public String selectRetireByPage(Model model, int pageNo){
@@ -43,8 +43,8 @@ public class HistoryController {
 	public String toUpdate(Model model, @PathVariable Integer id){
 		History history = historyService.selectHistory(id);
 		if (history.getStatus().equals("在职")) {
-			Employee employee = employeeService.selectByNumber(history.getEmployeeNumber());
-			return "forward:/employee/"+ employee.getId() +"/toUpdate.do";
+			Personnel personnel = personnelService.selectByNumber(history.getPersonnelNumber());
+			return "forward:/personnel/"+ personnel.getId() +"/toUpdate.do";
 		}else{
 			model.addAttribute("history", history);
 			return "admin/history_update";

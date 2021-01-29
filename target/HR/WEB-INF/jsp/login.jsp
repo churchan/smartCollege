@@ -27,14 +27,14 @@
 	<div class="signinpanel">
 		<div class="row">
 			<div class="col-sm-12">
-				<form method="post" action="<%=path %>/employee/checkLogin.do">
+				<form method="post" action="<%=path %>/personnel/checkLogin.do">
 					<h4 class="no-margins">
 						<font color="#6C6C6C">登录：</font>
 					</h4>
 					<p class="m-t-md">
 						<font color="#6C6C6C">欢迎登录西财天府学院智慧管理系统</font>
 					</p>
-					<input type="text" class="form-control uname" placeholder="用户名" name="employeeNumber" id="employeeNumber"/>
+					<input type="text" class="form-control uname" placeholder="用户名" name="personnelNumber" id="personnelNumber"/>
 					<input type="password" class="form-control pword m-b" placeholder="密码" name="password" id="password"/>
 					<p></p>
 					<a href="">忘记密码了？</a>

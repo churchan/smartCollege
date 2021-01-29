@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import edu.tfswufe.entity.Department;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.Move;
 import edu.tfswufe.entity.Overtime;
 import edu.tfswufe.mapper.DepartmentMapper;
-import edu.tfswufe.mapper.EmployeeMapper;
+import edu.tfswufe.mapper.PersonnelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class MoveService implements IService<Move>{
 
 
 	@Autowired
-	private EmployeeMapper employeeMapper;
+	private PersonnelMapper personnelMapper;
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	@Autowired
@@ -41,9 +41,9 @@ public class MoveService implements IService<Move>{
 		Department department = departmentMapper.selectByNumber(departmentNumber);
 		overtime.setDepartment(department);
 
-		Integer employeeNumber = overtime.getEmployeeNumber();
-		Employee employee = employeeMapper.selectByNumber(employeeNumber);
-		overtime.setEmployee(employee);
+		Integer personnelNumber = overtime.getPersonnelNumber();
+		Personnel personnel = personnelMapper.selectByNumber(personnelNumber);
+		overtime.setPersonnel(personnel);
 		return overtime;
 	}
 
@@ -53,8 +53,8 @@ public class MoveService implements IService<Move>{
 		List<Move> list = baseMapper.selectList(new EntityWrapper<Move>().
 				orderBy("id", false));
 		for(Move move : list){
-			Employee employee = employeeMapper.selectByNumber(move.getEmployeeNumber());
-			move.setEmployee(employee);
+			Personnel personnel = personnelMapper.selectByNumber(move.getPersonnelNumber());
+			move.setPersonnel(personnel);
 			Department department = departmentMapper.selectByNumber(move.getBefore());
 			move.setDepartment(department);
 			Department department2 = departmentMapper.selectByNumber(move.getAfter());

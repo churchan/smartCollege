@@ -1,4 +1,4 @@
-<%@page import="edu.tfswufe.entity.Employee"%>
+<%@page import="edu.tfswufe.entity.Personnel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
@@ -60,12 +60,12 @@
 					<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
 						<span class="ng-scope">个人</span>
 					</li>
-					<li><a class="J_menuItem" href="<%=path %>/employee/welcome.do">
+					<li><a class="J_menuItem" href="<%=path %>/personnel/welcome.do">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
                     </li>
-                    <% Employee employee = (Employee)session.getAttribute("loged"); %>
+                    <% Personnel personnel = (Personnel)session.getAttribute("loged"); %>
 					<li>
                         <a href="graph_metrics.html">
                             <i class="fa fa fa-newspaper-o"></i>
@@ -73,9 +73,9 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do">查看个人信息</a>
+                            <li><a class="J_menuItem" href="<%=path %>/personnel/oneself/<%=personnel.getId() %>/detial.do">查看个人信息</a>
                             </li>
-                            <li><a class="J_menuItem" href="<%=path %>/employee/oneself/<%=employee.getId() %>/toUpdate.do">修改个人信息</a>
+                            <li><a class="J_menuItem" href="<%=path %>/personnel/oneself/<%=personnel.getId() %>/toUpdate.do">修改个人信息</a>
                             </li>
                         </ul>
                     </li>
@@ -89,7 +89,7 @@
                         	<span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="<%=path %>/attendance/<%=employee.getEmployeeNumber() %>/oneself.do">考勤记录</a>
+                            <li><a class="J_menuItem" href="<%=path %>/attendance/<%=personnel.getPersonnelNumber() %>/oneself.do">考勤记录</a>
                             </li>
                         </ul>
                     </li>
@@ -100,7 +100,7 @@
                         	</span>
                         </a>
                         <ul class="nav nav-second-level">
-                           <li><a class="J_menuItem" href="<%=path %>/overtime/<%=employee.getEmployeeNumber() %>/oneself.do?pageNo=1">查看加班信息</a>
+                           <li><a class="J_menuItem" href="<%=path %>/overtime/<%=personnel.getPersonnelNumber() %>/oneself.do?pageNo=1">查看加班信息</a>
                             </li>
                         </ul>
                     </li>
@@ -130,19 +130,19 @@
                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
-                    	<li>欢迎：<%=employee.getName() %>&nbsp;</li>
+                    	<li>欢迎：<%=personnel.getName() %>&nbsp;</li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                 <i class="fa fa-user"></i> <!-- <span class="label label-primary">8</span> -->
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do" target="J_iframe">我的账户</a>
+                                <li><a href="<%=path %>/personnel/oneself/<%=personnel.getId() %>/detial.do" target="J_iframe">我的账户</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="<%=path %>/employee/login.do">退出登录</a>
+                                <li><a href="<%=path %>/personnel/login.do">退出登录</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="<%=path %>/employee/logout.do">注销登录</a>
+                                <li><a href="<%=path %>/personnel/logout.do">注销登录</a>
                                 </li>
                             </ul>
                         </li>
@@ -150,7 +150,7 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless></iframe>
+                <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/personnel/welcome.do" frameborder="0" seamless></iframe>
             </div>
         </div>
 		<!--右侧部分结束-->

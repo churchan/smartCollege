@@ -4,7 +4,7 @@
 <%@ page import="edu.tfswufe.entity.*" %>
 <%@ page import="com.baomidou.mybatisplus.plugins.Page" %>
 <%@page import="edu.tfswufe.util.MTimeUtil"%>
-<%@ page import="edu.tfswufe.entity.Employee" %>
+<%@ page import="edu.tfswufe.entity.Personnel" %>
 <% String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
@@ -52,27 +52,27 @@
 							</thead>
 							<tbody>
 							<%
-								Page<Employee> pe=(Page<Employee>)request.getAttribute("page");
+								Page<personnel> pe=(Page<personnel>)request.getAttribute("page");
 	                            if(null != pe && null != pe.getRecords() && pe.getRecords().size()>0){
-	                            	List<Employee> list = pe.getRecords();
+	                            	List<personnel> list = pe.getRecords();
 	                            	int index=1;
-	                            	for(Employee employee : list){
+	                            	for(Personnel personnel : list){
                             %>
 								<tr class="gradeA">
 									<td><%=index++ %></td>
-									<td><%=employee.getEmployeeNumber() %></td>
-									<td><%=employee.getName() %></td>
-									<td><%=employee.getGender() %></td>
-									<td><%=employee.getTelephone() %></td>
-									<td><%=employee.getDepartment().getName() %></td>
-									<td><%=employee.getPosition().getName() %></td>
+									<td><%=personnel.getPersonnelNumber() %></td>
+									<td><%=personnel.getName() %></td>
+									<td><%=personnel.getGender() %></td>
+									<td><%=personnel.getTelephone() %></td>
+									<td><%=personnel.getDepartment().getName() %></td>
+									<td><%=personnel.getPosition().getName() %></td>
 								<%
-									String intime = MTimeUtil.dateFormat(employee.getInTime());
+									String intime = MTimeUtil.dateFormat(personnel.getInTime());
 								%>
 									<td><%=intime %></td>
-									<td><a href="<%=path %>/employee/<%=employee.getId() %>/detial.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
-										<a href="<%=path %>/employee/<%=employee.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
-										<a onclick="del(<%=employee.getId() %>)" class="btn btn-danger delete">删除</a></td>
+									<td><a href="<%=path %>/personnel/<%=personnel.getId() %>/detial.do" class="btn btn-info">查看</a>&nbsp;&nbsp;
+										<a href="<%=path %>/personnel/<%=personnel.getId() %>/toUpdate.do" class="btn btn-primary">修改</a>&nbsp;&nbsp;
+										<a onclick="del(<%=personnel.getId() %>)" class="btn btn-danger delete">删除</a></td>
 								</tr>
 							<%
                             		}
@@ -87,18 +87,18 @@
 							<nav aria-label="Page navigation" style="margin: 0 auto; width: 200px">
 								<ul class="pagination" style="margin: 0;">
 									<li>
-										<a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()-1>1?pe.getCurrent()-1:1 %>"
+										<a href="<%=path %>/personnel/listPage.do?pageNo=<%=pe.getCurrent()-1>1?pe.getCurrent()-1:1 %>"
 											aria-label="Previous"> <span aria-hidden="true">前一页</span>
 										</a>
 									</li>
 								<%
 	 								for(int i=1;i<=pe.getPages();i++){
 								%>
-									<li><a href="<%=path %>/employee/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
+									<li><a href="<%=path %>/personnel/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
 								<%
 	 								 }
 								%>
-									<li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()+1<pe.getPages()?pe.getCurrent()+1:pe.getPages() %>"
+									<li><a href="<%=path %>/personnel/listPage.do?pageNo=<%=pe.getCurrent()+1<pe.getPages()?pe.getCurrent()+1:pe.getPages() %>"
 										aria-label="Next"> <span aria-hidden="true">后一页</span>
 									</a></li>
 								</ul>

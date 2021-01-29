@@ -39,7 +39,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">工号</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" name="employeeNumber" value="<%=history.getEmployeeNumber() %>" readonly="readonly">
+									<input type="text" class="form-control" name="personnelNumber" value="<%=history.getPersonnelNumber() %>" readonly="readonly">
 								</div>
 							</div>
 							<div class="form-group">

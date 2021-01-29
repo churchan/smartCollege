@@ -59,7 +59,7 @@
                             %>
 								<tr class="gradeA">
 									<td><%=index++ %></td>
-									<td><%=history.getEmployeeNumber() %></td>
+									<td><%=history.getPersonnelNumber() %></td>
 									<td><%=history.getName() %></td>
 									<td><%=history.getGender() %></td>
 									<td><%=history.getTelephone() %></td>

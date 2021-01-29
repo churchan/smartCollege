@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.Leave;
-import edu.tfswufe.service.EmployeeService;
+import edu.tfswufe.service.PersonnelService;
 import edu.tfswufe.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class LeaveController {
 	@Autowired
 	private LeaveService leaveService;
 	@Autowired
-	private EmployeeService employeeService;
+	private PersonnelService personnelService;
 
 	@RequestMapping("/list.do")
 	public String selectList(Model model){
@@ -53,20 +53,20 @@ public class LeaveController {
 	}
 
 	@RequestMapping("/add.do")
-	public String add(Integer employeeNumber, Leave leave, String start, String end){
-		Employee employee =employeeService.selectByNumber(employeeNumber);
-		leave.setDepartmentNumber(employee.getDepartmentNumber());
-		leave.setEmployeeNumber(employeeNumber);
+	public String add(Integer personnelNumber, Leave leave, String start, String end){
+		Personnel personnel =personnelService.selectByNumber(personnelNumber);
+		leave.setDepartmentNumber(personnel.getDepartmentNumber());
+		leave.setPersonnelNumber(personnelNumber);
 		leave.setStartTime(MTimeUtil.stringParse(start));
 		leave.setEndTime(MTimeUtil.stringParse(end));
 		leaveService.insert(leave);
-		return "forward:/employee/welcome.do";
+		return "forward:/personnel/welcome.do";
 	}
 
 	@RequestMapping("/oneself.do")
-	public String seletByEmployee(HttpSession session, int pageNo, Model model){
-		Employee employee = (Employee)session.getAttribute("loged");
-		Page<Leave> page = leaveService.seletByEmployee(employee.getEmployeeNumber(), pageNo);
+	public String seletBypersonnel(HttpSession session, int pageNo, Model model){
+		Personnel personnel = (Personnel)session.getAttribute("loged");
+		Page<Leave> page = leaveService.seletBypersonnel(personnel.getPersonnelNumber(), pageNo);
 		model.addAttribute("page", page);
 		return "admin/oneself_leave";
 	}
@@ -74,8 +74,8 @@ public class LeaveController {
 	@RequestMapping("/notlist.do")
 	public String selectNotList(Model model, HttpSession session){
 		//获取登录用户的信息
-		Employee employee = (Employee) session.getAttribute("loged");
-		List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "未批准");
+		Personnel personnel = (Personnel) session.getAttribute("loged");
+		List<Leave> list = leaveService.selectListByStatus(personnel.getDepartmentNumber(), "未批准");
 		model.addAttribute("list", list);
 		return "admin/leave_notlist";
 	}
@@ -83,8 +83,8 @@ public class LeaveController {
 	@RequestMapping("/yeslist.do")
 	public String selectYesList(Model model, HttpSession session){
 		//获取登录用户的信息
-		Employee employee = (Employee) session.getAttribute("loged");
-		List<Leave> list = leaveService.selectListByStatus(employee.getDepartmentNumber(), "已批准");
+		Personnel personnel = (Personnel) session.getAttribute("loged");
+		List<Leave> list = leaveService.selectListByStatus(personnel.getDepartmentNumber(), "已批准");
 		model.addAttribute("list", list);
 		return "admin/leave_yeslist";
 	}

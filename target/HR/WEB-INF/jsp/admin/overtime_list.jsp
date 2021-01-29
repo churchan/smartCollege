@@ -60,7 +60,7 @@
 								<tr class="gradeA">
 									<td><%=index++ %></td>
 									<td><%=overtime.getDepartment().getName() %></td>
-									<td><%=overtime.getEmployee().getName() %></td>
+									<td><%=overtime.getPersonnel().getName() %></td>
 								<%
 									String day = MTimeUtil.dateFormat(overtime.getDay());
 								%>

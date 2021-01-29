@@ -40,7 +40,7 @@
 						    	<div class="col-md-1"></div>
 								<div class="col-md-4">
 							        <label class="col-sm-8 control-label">工号：</label>
-							        <p class="form-control-static"><%=history.getEmployeeNumber() %></p>
+							        <p class="form-control-static"><%=history.getPersonnelNumber() %></p>
 						   		</div>
 						   		<div class="col-md-4">
 							        <label class="col-sm-5 control-label">姓名：</label>

@@ -40,14 +40,14 @@
 						    	<div class="col-md-2"></div>
 								<div class="col-md-5">
 							        <label class="col-sm-8 control-label">工号：</label>
-							        <p class="form-control-static"><%=leave.getEmployeeNumber() %></p>
+							        <p class="form-control-static"><%=leave.getPersonnelNumber() %></p>
 						   		</div>
 							</div>
 							<div class="form-group">
 						    	<div class="col-md-2"></div>
 								<div class="col-md-5">
 							        <label class="col-sm-8 control-label">姓名：</label>
-							        <p class="form-control-static"><%=leave.getEmployee().getName() %></p>
+							        <p class="form-control-static"><%=leave.getPersonnel().getName() %></p>
 						   		</div>
 							</div>
 							<div class="form-group">

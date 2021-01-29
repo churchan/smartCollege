@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import edu.tfswufe.entity.Attendance;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.mapper.AttendanceMapper;
-import edu.tfswufe.mapper.EmployeeMapper;
+import edu.tfswufe.mapper.PersonnelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ import edu.tfswufe.util.MTimeUtil;
 public class AttendanceService implements IService<Attendance>{
 
 	@Autowired
-	private EmployeeMapper employeeMapper;
+	private PersonnelMapper personnelMapper;
 	@Autowired
 	private AttendanceMapper baseMapper;
 
@@ -40,17 +40,17 @@ public class AttendanceService implements IService<Attendance>{
 	Date ovEndTime = MTimeUtil.stringTimeParse(MConstant.OVEndTime);
 
 
-	public void addStart(Integer employeeNumber){
+	public void addStart(Integer personnelNumber){
 		//获取当前时间
 		Date nowTime = MTimeUtil.nowTime();
 		//获取当前日期
 		Date nowDate = MTimeUtil.nowDate();
 		Attendance attendance = new Attendance();
-		attendance.setEmployeeNumber(employeeNumber);
+		attendance.setPersonnelNumber(personnelNumber);
 		attendance.setDay(nowDate);
 		attendance.setStartTime(nowTime);
 		if (nowTime.after(amTime) && nowTime.before(amEndTime)) {
-			Attendance att = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
+			Attendance att = baseMapper.selectByNumber(personnelNumber, nowDate, "上午");
 			if (att == null) {
 				attendance.setTimeType("上午");
 				if (nowTime.before(amStartTime)) {
@@ -61,7 +61,7 @@ public class AttendanceService implements IService<Attendance>{
 				baseMapper.insert(attendance);
 			}
 		}else if(nowTime.after(pmTime) && nowTime.before(pmEndTime)){
-			Attendance att = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+			Attendance att = baseMapper.selectByNumber(personnelNumber, nowDate, "下午");
 			if (att == null) {
 				attendance.setTimeType("下午");
 				if (nowTime.before(pmStartTime)) {
@@ -72,7 +72,7 @@ public class AttendanceService implements IService<Attendance>{
 				baseMapper.insert(attendance);
 			}
 		}else if(nowTime.after(ovTime) && nowTime.before(ovEndTime)){
-			Attendance att = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
+			Attendance att = baseMapper.selectByNumber(personnelNumber, nowDate, "加班");
 			if (att == null) {
 				attendance.setTimeType("加班");
 				if (nowTime.before(ovStartTime)) {
@@ -86,11 +86,11 @@ public class AttendanceService implements IService<Attendance>{
 	}
 
 
-	public void addEnd(Integer employeeNumber) {
+	public void addEnd(Integer personnelNumber) {
 		Date nowTime = MTimeUtil.nowTime();
 		Date nowDate = MTimeUtil.nowDate();
 		if (nowTime.after(amStartTime) && nowTime.before(pmStartTime)) {
-			Attendance attendance = baseMapper.selectByNumber(employeeNumber, nowDate, "上午");
+			Attendance attendance = baseMapper.selectByNumber(personnelNumber, nowDate, "上午");
 			if (attendance.getEndTime() == null) {
 				attendance.setEndTime(nowTime);
 				if (nowTime.after(amEndTime)) {
@@ -101,7 +101,7 @@ public class AttendanceService implements IService<Attendance>{
 				baseMapper.updateById(attendance);
 			}
 		}else if(nowTime.after(pmStartTime) && nowTime.before(ovStartTime)){
-			Attendance attendance = baseMapper.selectByNumber(employeeNumber, nowDate, "下午");
+			Attendance attendance = baseMapper.selectByNumber(personnelNumber, nowDate, "下午");
 			if (attendance.getEndTime() == null) {
 				attendance.setEndTime(nowTime);
 				if (nowTime.after(pmEndTime)) {
@@ -112,7 +112,7 @@ public class AttendanceService implements IService<Attendance>{
 				baseMapper.updateById(attendance);
 			}
 		}else if(nowTime.after(ovStartTime)){
-			Attendance attendance = baseMapper.selectByNumber(employeeNumber, nowDate, "加班");
+			Attendance attendance = baseMapper.selectByNumber(personnelNumber, nowDate, "加班");
 			if (attendance.getEndTime() == null) {
 				attendance.setEndTime(nowTime);
 				if (nowTime.after(ovEndTime)) {
@@ -131,23 +131,23 @@ public class AttendanceService implements IService<Attendance>{
 		List<Attendance> list = baseMapper.selectList(new EntityWrapper<Attendance>().
 				orderBy("id", false));
 		for(Attendance attendance : list){
-			//为attendance对象setEmployee
-			Employee employee = employeeMapper.selectByNumber(attendance.getEmployeeNumber());
-			attendance.setEmployee(employee);
+			//为attendance对象setPersonnel
+			Personnel personnel = personnelMapper.selectByNumber(attendance.getPersonnelNumber());
+			attendance.setPersonnel(personnel);
 		}
 		return list;
 	}
 
 
-	public List<Attendance> selectByEmployee(Integer employeeNumber) {
+	public List<Attendance> selectBypersonnel(Integer personnelNumber) {
 		 //查询一个员工的考勤记录，根据id倒序排序
 		List<Attendance> list = baseMapper.selectList(new EntityWrapper<Attendance>()
-				.eq("employee_number", employeeNumber)
+				.eq("personnel_number", personnelNumber)
 				.orderBy("id", false));
 		for(Attendance attendance : list){
-			//为attendance对象setEmployee
-			Employee employee = employeeMapper.selectByNumber(attendance.getEmployeeNumber());
-			attendance.setEmployee(employee);
+			//为attendance对象setPersonnel
+			Personnel personnel = personnelMapper.selectByNumber(attendance.getPersonnelNumber());
+			attendance.setPersonnel(personnel);
 		}
 		return list;
 	}

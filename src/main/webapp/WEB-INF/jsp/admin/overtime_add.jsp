@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.tfswufe.entity.*" %>
-<%@ page import="edu.tfswufe.entity.Employee" %>
+<%@ page import="edu.tfswufe.entity.Personnel" %>
 <%@ page import="edu.tfswufe.entity.Department" %>
 <% String path = request.getContextPath(); %>
 <!DOCTYPE>
@@ -57,15 +57,15 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">员工</label>
 								<div class="col-sm-7">
-									<select class="form-control m-b" id="employee" name="employeeNumber" size="1" required>
+									<select class="form-control m-b" id="personnel" name="personnelNumber" size="1" required>
 										<option value="">--请选择员工--</option>
 										<%
-											List<Employee> eList = (List<Employee>) request.getAttribute("eList");
-											for(Employee employee : eList){
+											List<personnel> eList = (List<personnel>) request.getAttribute("eList");
+											for(Personnel personnel : eList){
 
 										%>
-											<option value="<%=employee.getEmployeeNumber() %>">
-												<%=employee.getName() %>
+											<option value="<%=personnel.getPersonnelNumber() %>">
+												<%=personnel.getName() %>
 											</option>
 										<%
 											}
@@ -114,17 +114,17 @@
     <script>
 		$(function(){
 		 	$("#department").unbind("change", corpChange ).bind("change", corpChange);
-		 	$("#employee").unbind("change", deptChange).bind("change",deptChange);
+		 	$("#personnel").unbind("change", deptChange).bind("change",deptChange);
 		 	<span style="color:#FF0000"></span>
 			$("#department").change();
 		});
 		function corpChange (){
 			var selectedValue = $("#department").val();
-			$("#employee").children("span").each(function(){
+			$("#personnel").children("span").each(function(){
 				$(this).children().clone().replaceAll($(this));
 			});
 			if($.trim(selectedValue) != ""){
-		 		$("#employee").children("option[parentid!='" + selectedValue + "'][value!='']").each(function(){
+		 		$("#personnel").children("option[parentid!='" + selectedValue + "'][value!='']").each(function(){
 					$(this).wrap("<span style='display:none'></span>");
 				});
 			}

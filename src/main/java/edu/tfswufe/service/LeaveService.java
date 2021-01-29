@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import edu.tfswufe.entity.Department;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.Leave;
 import edu.tfswufe.mapper.DepartmentMapper;
-import edu.tfswufe.mapper.EmployeeMapper;
+import edu.tfswufe.mapper.PersonnelMapper;
 import edu.tfswufe.mapper.LeaveMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,21 +22,21 @@ import com.baomidou.mybatisplus.service.IService;
 public class LeaveService implements IService<Leave>{
 
 	@Autowired
-	private EmployeeMapper employeeMapper;
+	private PersonnelMapper personnelMapper;
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	@Autowired
 	private LeaveMapper baseMapper;
 
 	/**
-	 * 为leave对象setEmployee setDepartment
+	 * 为leave对象setPersonnel setDepartment
 	 * @param leave
 	 * @return
 	 */
 	public Leave setObject(Leave leave){
-		Integer employeeNumber = leave.getEmployeeNumber();
-		Employee employee = employeeMapper.selectByNumber(employeeNumber);
-		leave.setEmployee(employee);
+		Integer personnelNumber = leave.getPersonnelNumber();
+		Personnel personnel = personnelMapper.selectByNumber(personnelNumber);
+		leave.setPersonnel(personnel);
 
 		Integer departmentNumber = leave.getDepartmentNumber();
 		Department department = departmentMapper.selectByNumber(departmentNumber);
@@ -49,7 +49,7 @@ public class LeaveService implements IService<Leave>{
 		List<Leave> list = baseMapper.selectList(new EntityWrapper<Leave>()
 				.orderBy("start_time",false));
 		for(Leave leave : list){
-			//为leave对象setEmployee setDepartment
+			//为leave对象setPersonnel setDepartment
 			setObject(leave);
 		}
 		return list;
@@ -58,7 +58,7 @@ public class LeaveService implements IService<Leave>{
 
 	public Leave selectLeave(Integer id) {
 		Leave leave = baseMapper.selectById(id);
-		//为leave对象setEmployee setDepartment
+		//为leave对象setPersonnel setDepartment
 		setObject(leave);
 		return leave;
 	}
@@ -71,14 +71,14 @@ public class LeaveService implements IService<Leave>{
 	}
 
 
-	public Page<Leave> seletByEmployee(Integer employeeNumber, int pageNo) {
+	public Page<Leave> seletBypersonnel(Integer personnelNumber, int pageNo) {
 		Page<Leave> page = new Page<Leave>(pageNo, 2,"status");
 		//是否为升序 ASC（ 默认： true ）
 		page.setAsc(false);
 		List<Leave> list = baseMapper.selectPage(page, new EntityWrapper<Leave>()
-				.eq("employee_number", employeeNumber));
+				.eq("personnel_number", personnelNumber));
 		for(Leave leave : list){
-			//为leave对象setEmployee setDepartment
+			//为leave对象setPersonnel setDepartment
 			setObject(leave);
 		}
 		page.setRecords(list);
@@ -92,7 +92,7 @@ public class LeaveService implements IService<Leave>{
 				.eq("status", status)
 				.orderBy("id",false));
 		for(Leave leave : list){
-			//为leave对象setEmployee setDepartment
+			//为leave对象setPersonnel setDepartment
 			setObject(leave);
 		}
 		return list;

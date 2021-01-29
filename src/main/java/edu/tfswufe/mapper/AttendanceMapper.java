@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 public interface AttendanceMapper extends BaseMapper<Attendance>{
 
 	/**
-	 * 根据employeeNumber和day查询记录
-	 * @param employeeNumber
+	 * 根据personnelNumber和day查询记录
+	 * @param personnelNumber
 	 * @return
 	 */
-	Attendance selectByNumber(@Param("employeeNumber")Integer employeeNumber,
+	Attendance selectByNumber(@Param("personnelNumber")Integer personnelNumber,
 			@Param("day")Date day, @Param("timeType")String timeType);
 }

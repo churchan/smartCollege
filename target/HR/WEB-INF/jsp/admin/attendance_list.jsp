@@ -57,8 +57,8 @@
                             %>
 								<tr class="gradeA">
 									<td><%=index++ %></td>
-									<td><%=attendance.getEmployeeNumber() %></td>
-									<td><%=attendance.getEmployee().getName() %></td>
+									<td><%=attendance.getPersonnelNumber() %></td>
+									<td><%=attendance.getPersonnel().getName() %></td>
 									<%
 										String day = MTimeUtil.dateFormat(attendance.getDay());
 										String startTime = MTimeUtil.timeFormat(attendance.getStartTime());

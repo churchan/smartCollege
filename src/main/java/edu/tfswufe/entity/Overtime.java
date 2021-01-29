@@ -21,14 +21,14 @@ public class Overtime extends Model<Overtime> implements Serializable{
 	@TableId
 	private Integer id;
 	private Integer departmentNumber;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private Date day;
 	private Date startTime;
 	private Date endTime;
 	private String notes;
 
 	@TableField(exist=false)
-	private Employee employee;
+	private Personnel personnel;
 	@TableField(exist=false)
 	private Department department;
 
@@ -44,11 +44,11 @@ public class Overtime extends Model<Overtime> implements Serializable{
 	public void setDepartmentNumber(Integer departmentNumber) {
 		this.departmentNumber = departmentNumber;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public Date getDay() {
 		return day;
@@ -74,11 +74,11 @@ public class Overtime extends Model<Overtime> implements Serializable{
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public Personnel getPersonnel() {
+		return personnel;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setPersonnel(Personnel personnel) {
+		this.personnel = personnel;
 	}
 	public Department getDepartment() {
 		return department;

@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import edu.tfswufe.entity.Department;
-import edu.tfswufe.entity.Employee;
+import edu.tfswufe.entity.Personnel;
 import edu.tfswufe.entity.Overtime;
 import edu.tfswufe.mapper.DepartmentMapper;
-import edu.tfswufe.mapper.EmployeeMapper;
+import edu.tfswufe.mapper.PersonnelMapper;
 import edu.tfswufe.mapper.OvertimeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class OvertimeService implements IService<Overtime>{
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	@Autowired
-	private EmployeeMapper employeeMapper;
+	private PersonnelMapper personnelMapper;
 	@Autowired
 	private OvertimeMapper baseMapper;
 
@@ -38,9 +38,9 @@ public class OvertimeService implements IService<Overtime>{
 		Department department = departmentMapper.selectByNumber(departmentNumber);
 		overtime.setDepartment(department);
 
-		Integer employeeNumber = overtime.getEmployeeNumber();
-		Employee employee = employeeMapper.selectByNumber(employeeNumber);
-		overtime.setEmployee(employee);
+		Integer personnelNumber = overtime.getPersonnelNumber();
+		Personnel personnel = personnelMapper.selectByNumber(personnelNumber);
+		overtime.setPersonnel(personnel);
 		return overtime;
 	}
 
@@ -58,16 +58,16 @@ public class OvertimeService implements IService<Overtime>{
 	}
 
 
-	public Page<Overtime> selectByEmployee(int pageNo, Integer employeeNumber) {
+	public Page<Overtime> selectBypersonnel(int pageNo, Integer personnelNumber) {
 		Page<Overtime> page = new Page<Overtime>(pageNo, 4, "id");
 		//是否为升序 ASC（ 默认： true ）
 		page.setAsc(false);
 		 //查询一个员工的考勤记录，根据id倒序排序
 		List<Overtime> oList = baseMapper.selectPage(page, new EntityWrapper<Overtime>()
-				.eq("employee_number", employeeNumber)
+				.eq("personnel_number", personnelNumber)
 				.orderBy("id", false));
 		for(Overtime overtime : oList){
-			//为attendance对象setEmployee
+			//为attendance对象setPersonnel
 			setObject(overtime);
 		}
 		page.setRecords(oList);

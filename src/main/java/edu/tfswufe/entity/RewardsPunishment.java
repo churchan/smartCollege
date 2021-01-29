@@ -19,7 +19,7 @@ public class RewardsPunishment extends Model<RewardsPunishment> implements Seria
 
 	@TableId
 	private Integer id;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private String type;
 	private String reason;
 	private Float money;
@@ -33,11 +33,11 @@ public class RewardsPunishment extends Model<RewardsPunishment> implements Seria
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public String getType() {
 		return type;

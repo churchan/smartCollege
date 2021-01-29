@@ -20,7 +20,7 @@ public class MoveTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
 		MoveService service = (MoveService) context.getBean("changeService");
 		Move move = new Move();
-		move.setEmployeeNumber(123);
+		move.setPersonnelNumber(123);
 		move.setAfter(123);
 		move.setBefore(123);
 		move.setTime(new Date());

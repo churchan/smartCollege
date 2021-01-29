@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <html>
 <body>
-	<%response.sendRedirect("employee/login.do"); %>
+	<%response.sendRedirect("personnel/login.do"); %>
 </body>
 </html>

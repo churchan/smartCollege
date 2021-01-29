@@ -84,8 +84,8 @@ public class HistoryService implements IService<History>{
 		return page;
 	}
 
-	public History selectByNumber(Integer employeeNumber) {
-		return baseMapper.selectByNumber(employeeNumber);
+	public History selectByNumber(Integer personnelNumber) {
+		return baseMapper.selectByNumber(personnelNumber);
 	}
 
 

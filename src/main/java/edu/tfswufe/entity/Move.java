@@ -20,7 +20,7 @@ public class Move extends Model<Move> implements Serializable{
 
 	@TableId
 	private Integer id;
-	private Integer employeeNumber;
+	private Integer personnelNumber;
 	private Integer before;
 	private Integer after;
 	private Date time;
@@ -28,7 +28,7 @@ public class Move extends Model<Move> implements Serializable{
 	private String notes;
 
 	@TableField(exist=false)
-	private Employee employee;
+	private Personnel personnel;
 	@TableField(exist=false)
 	private Department department;
 	@TableField(exist=false)
@@ -40,11 +40,11 @@ public class Move extends Model<Move> implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmployeeNumber() {
-		return employeeNumber;
+	public Integer getPersonnelNumber() {
+		return personnelNumber;
 	}
-	public void setEmployeeNumber(Integer employeeNumber) {
-		this.employeeNumber = employeeNumber;
+	public void setPersonnelNumber(Integer personnelNumber) {
+		this.personnelNumber = personnelNumber;
 	}
 	public Integer getBefore() {
 		return before;
@@ -76,11 +76,11 @@ public class Move extends Model<Move> implements Serializable{
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public Employee getEmployee() {
-		return employee;
+	public Personnel getPersonnel() {
+		return personnel;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setPersonnel(Personnel personnel) {
+		this.personnel = personnel;
 	}
 	public Department getDepartment() {
 		return department;
@@ -101,8 +101,8 @@ public class Move extends Model<Move> implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Move [id=" + id + ", employeeNumber=" + employeeNumber + ", before=" + before + ", after=" + after
-				+ ", time=" + time + ", manager=" + manager + ", notes=" + notes + ", employee=" + employee
+		return "Move [id=" + id + ", personnelNumber=" + personnelNumber + ", before=" + before + ", after=" + after
+				+ ", time=" + time + ", manager=" + manager + ", notes=" + notes + ", personnel=" + personnel
 				+ ", department=" + department + ", department2=" + department2 + "]";
 	}
 

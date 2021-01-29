@@ -53,8 +53,8 @@
                             %>
 								<tr class="gradeA">
 									<td><%=index++ %></td>
-									<td><%=move.getEmployeeNumber() %></td>
-									<td><%=move.getEmployee().getName() %></td>
+									<td><%=move.getPersonnelNumber() %></td>
+									<td><%=move.getPersonnel().getName() %></td>
 									<td><%=move.getDepartment().getName() %></td>
 									<td><%=move.getDepartment2().getName() %></td>
 								<%
