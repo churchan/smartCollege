@@ -87,21 +87,21 @@
 						</ul></li>
 
 					<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-						<span class="ng-scope">员工</span>
+						<span class="ng-scope">学生</span>
 					</li>
 					<li><a href="graph_metrics.html">
 							<i class="fa fa fa-user-md"></i>
-							<span class="nav-label">员工管理</span>
+							<span class="nav-label">学生管理</span>
 							<span class="fa arrow"></span>
 						</a>
 						<ul class="nav nav-second-level">
-							<li><a class="J_menuItem" href="<%=path %>/personnel/listPage.do?pageNo=1">在职员工管理</a>
+							<li><a class="J_menuItem" href="<%=path %>/personnel/listPage.do?pageNo=1">在读学生管理</a>
 							</li>
-							<li><a class="J_menuItem" href="<%=path %>/history/retireListPage.do?pageNo=1">离休员工管理</a>
+							<li><a class="J_menuItem" href="<%=path %>/history/retireListPage.do?pageNo=1">离休学生管理</a>
 							</li>
-							<li><a class="J_menuItem" href="<%=path %>/history/list.do">员工档案管理</a>
+							<li><a class="J_menuItem" href="<%=path %>/history/list.do">学生档案管理</a>
 							</li>
-							<li><a class="J_menuItem" href="<%=path %>/move/list.do">员工调动记录</a>
+							<li><a class="J_menuItem" href="<%=path %>/move/list.do">学生调动记录</a>
 							</li>
 						</ul>
 					</li>
@@ -130,7 +130,7 @@
                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" method="post" action="<%=path %>/personnel/search.do?pageNo=1" target="J_iframe">
                             <div class="form-group">
-                                <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">
+                                <input type="text" placeholder="输入查找的学生的姓名 …" class="form-control" name="input" id="top-search">
                             </div>
                         </form>
                     </div>

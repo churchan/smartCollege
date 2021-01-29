@@ -2,7 +2,7 @@ package edu.tfswufe.util;
 
 public class MConstant {
 
-	/*上下班时间*/
+	/*上下课时间*/
 	public static String AMStartTime = "9:00:00";
 	public static String AMEndTime = "11:59:59";
 	public static String PMStartTime = "15:00:00";

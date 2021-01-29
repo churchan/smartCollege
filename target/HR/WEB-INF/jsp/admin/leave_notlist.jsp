@@ -10,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>天府学院 - 员工未批准请假列表</title>
+	<title>天府学院 - 学生未批准请假列表</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 

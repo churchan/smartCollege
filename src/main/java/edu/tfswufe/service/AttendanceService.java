@@ -139,7 +139,7 @@ public class AttendanceService implements IService<Attendance>{
 	}
 
 
-	public List<Attendance> selectBypersonnel(Integer personnelNumber) {
+	public List<Attendance> selectByPersonnel(Integer personnelNumber) {
 		 //查询一个员工的考勤记录，根据id倒序排序
 		List<Attendance> list = baseMapper.selectList(new EntityWrapper<Attendance>()
 				.eq("personnel_number", personnelNumber)

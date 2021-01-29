@@ -71,7 +71,7 @@ public class LeaveService implements IService<Leave>{
 	}
 
 
-	public Page<Leave> seletBypersonnel(Integer personnelNumber, int pageNo) {
+	public Page<Leave> selectByPersonnel(Integer personnelNumber, int pageNo) {
 		Page<Leave> page = new Page<Leave>(pageNo, 2,"status");
 		//是否为升序 ASC（ 默认： true ）
 		page.setAsc(false);

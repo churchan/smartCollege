@@ -42,7 +42,7 @@ public class HistoryController {
 	@RequestMapping("/{id}/toUpdate.do")
 	public String toUpdate(Model model, @PathVariable Integer id){
 		History history = historyService.selectHistory(id);
-		if (history.getStatus().equals("在职")) {
+		if (history.getStatus().equals("在读")) {
 			Personnel personnel = personnelService.selectByNumber(history.getPersonnelNumber());
 			return "forward:/personnel/"+ personnel.getId() +"/toUpdate.do";
 		}else{

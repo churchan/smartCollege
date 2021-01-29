@@ -39,9 +39,9 @@
 					<p id="time">&nbsp;</p>
 					<p>&nbsp;</p>
 					<p><a href="<%=path %>/attendance/addStart.do?personnelNumber=<%=personnel.getPersonnelNumber() %>"
-							class="btn btn-info btn-lg">&nbsp;上班签到&nbsp;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+							class="btn btn-info btn-lg">&nbsp;上课签到&nbsp;</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						<a href="<%=path %>/attendance/addEnd.do?personnelNumber=<%=personnel.getPersonnelNumber() %>"
-							class="btn btn-info btn-lg">&nbsp;下班签到&nbsp;</a>
+							class="btn btn-info btn-lg">&nbsp;下课签到&nbsp;</a>
 					</p>
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>

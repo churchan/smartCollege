@@ -117,6 +117,6 @@ public class PersonnelTest {
 		String xmlPath="spring/spring.xml";
 		ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
 		PersonnelService eService = (PersonnelService) context.getBean("personnelService");
-		eService.deletepersonnel(19);
+		eService.deletePersonnel(19);
 	}
 }

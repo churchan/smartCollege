@@ -51,9 +51,9 @@
 								<div class="col-sm-7">
 									<select class="form-control m-b" name="level" size="1" required>
 										<option value="部门主任">部门主任</option>
-										<option value="部门员工">部门员工</option>
+										<option value="部门学生">部门学生</option>
 										<option value="人事部主任">人事部主任</option>
-										<option value="人事部员工">人事部员工</option>
+										<option value="人事部学生">人事部学生</option>
 									</select>
 								</div>
 							</div>

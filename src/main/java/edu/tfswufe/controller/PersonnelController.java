@@ -119,15 +119,15 @@ public class PersonnelController {
 		//得到操作人员的名字
 		Personnel personnel2 = (Personnel) session.getAttribute("loged");
 		if("admin".equals(personnel2.getName())) {
-			status="在职";
+			status="在读";
 		}
-		personnelService.updatepersonnel(personnel, status, personnel2.getName());
+		personnelService.updatePersonnel(personnel, status, personnel2.getName());
 		return "forward:/personnel/listPage.do?pageNo=1";
 	}
 
 	@RequestMapping("/{id}/delete.do")
 	public String deleteById(@PathVariable Integer id){
-		personnelService.deletepersonnel(id);
+		personnelService.deletePersonnel(id);
 		return "forward:/personnel/listPage.do?pageNo=1";
 	}
 

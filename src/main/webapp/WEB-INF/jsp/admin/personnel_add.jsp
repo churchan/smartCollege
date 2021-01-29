@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>天府学院 - 添加员工</title>
+	<title>天府学院 - 添加学生</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
@@ -31,12 +31,12 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>添加员工</h5>
+						<h5>添加学生</h5>
 					</div>
 					<div class="ibox-content">
 						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/personnel/add.do">
 							<div class="form-group">
-								<label class="col-sm-3 control-label">工号</label>
+								<label class="col-sm-3 control-label">学号</label>
 								<div class="col-sm-7">
 									<% Integer personnelNumber = (Integer)request.getAttribute("personnelNumber"); %>
 									<input type="text" class="form-control" name="personnelNumber" value="<%=personnelNumber %>" readonly="readonly">

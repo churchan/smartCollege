@@ -106,7 +106,7 @@ public class PersonnelService{
 		history.setInTime(personnel.getInTime());
 		history.setDepartmentNumber(personnel.getDepartmentNumber());
 		history.setPositionNumber(personnel.getPositionNumber());
-		history.setStatus("在职");
+		history.setStatus("在读");
 		history.setNotes(personnel.getNotes());
 		historyMapper.insert(history);
 	}
@@ -120,9 +120,9 @@ public class PersonnelService{
 	}
 
 	@Transactional
-	public void updatepersonnel(Personnel personnel, String status, String manager) {
-		//判断员工的在职状态是否改变
-		if (status.equals("在职")) {
+	public void updatePersonnel(Personnel personnel, String status, String manager) {
+		//判断员工的在读状态是否改变
+		if (status.equals("在读")) {
 			//状态未改变，更新员工信息
 			//获取员工原始信息，用于判断部门或职称是否改变
 			Personnel personnel2 = baseMapper.selectById(personnel.getId());
@@ -140,7 +140,7 @@ public class PersonnelService{
 			baseMapper.updateById(personnel);
 		}else{
 			//状态变为离职或退休
-			//删除在职员工记录
+			//删除在读员工记录
 			baseMapper.deleteById(personnel.getId());
 			//更新员工档案的状态
 			History history = historyMapper.selectByNumber(personnel.getPersonnelNumber());
@@ -156,10 +156,10 @@ public class PersonnelService{
 	}
 
 	@Transactional
-	public void deletepersonnel(Integer id) {
+	public void deletePersonnel(Integer id) {
 		//先查询再删除，否则NullPointerException
 		Personnel personnel = baseMapper.selectById(id);
-		//删除在职员工记录
+		//删除在读员工记录
 		baseMapper.deleteById(id);
 		//将员工档案表中的状态改为离职
 		History history = historyMapper.selectByNumber(personnel.getPersonnelNumber());

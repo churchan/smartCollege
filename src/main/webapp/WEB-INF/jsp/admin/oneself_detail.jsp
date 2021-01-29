@@ -39,7 +39,7 @@
 						    <div class="form-group">
 						    	<div class="col-md-1"></div>
 								<div class="col-md-4">
-							        <label class="col-sm-8 control-label">工号：</label>
+							        <label class="col-sm-8 control-label">学号：</label>
 							        <p class="form-control-static"><%=personnel.getPersonnelNumber() %></p>
 						   		</div>
 						   		<div class="col-md-4">

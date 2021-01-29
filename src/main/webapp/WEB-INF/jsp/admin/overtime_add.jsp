@@ -55,12 +55,12 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">员工</label>
+								<label class="col-sm-3 control-label">学生</label>
 								<div class="col-sm-7">
 									<select class="form-control m-b" id="personnel" name="personnelNumber" size="1" required>
-										<option value="">--请选择员工--</option>
+										<option value="">--请选择学生--</option>
 										<%
-											List<personnel> eList = (List<personnel>) request.getAttribute("eList");
+											List<Personnel> eList = (List<Personnel>) request.getAttribute("eList");
 											for(Personnel personnel : eList){
 
 										%>

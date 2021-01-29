@@ -64,9 +64,9 @@ public class LeaveController {
 	}
 
 	@RequestMapping("/oneself.do")
-	public String seletBypersonnel(HttpSession session, int pageNo, Model model){
+	public String selectByPersonnel(HttpSession session, int pageNo, Model model){
 		Personnel personnel = (Personnel)session.getAttribute("loged");
-		Page<Leave> page = leaveService.seletBypersonnel(personnel.getPersonnelNumber(), pageNo);
+		Page<Leave> page = leaveService.selectByPersonnel(personnel.getPersonnelNumber(), pageNo);
 		model.addAttribute("page", page);
 		return "admin/oneself_leave";
 	}

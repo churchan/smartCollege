@@ -131,7 +131,7 @@
                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" method="post" action="<%=path %>/personnel/search.do?pageNo=1" target="J_iframe">
                             <div class="form-group">
-                                <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">
+                                <input type="text" placeholder="输入查找的学生的姓名 …" class="form-control" name="input" id="top-search">
                             </div>
                         </form>
                     </div>

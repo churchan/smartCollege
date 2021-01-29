@@ -83,7 +83,7 @@ public class OvertimeController {
 
 	@RequestMapping("/{personnelNumber}/oneself.do")
 	public String select(Model model, @PathVariable Integer personnelNumber, int pageNo){
-		Page<Overtime> page = overtimeService.selectBypersonnel(pageNo, personnelNumber);
+		Page<Overtime> page = overtimeService.selectByPersonnel(pageNo, personnelNumber);
 		model.addAttribute("page",page);
 		return "admin/oneself_overtime";
 	}

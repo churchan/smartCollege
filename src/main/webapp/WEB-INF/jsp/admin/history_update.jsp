@@ -10,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>天府学院 - 修改离休员工信息</title>
+	<title>天府学院 - 修改离休学生信息</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
@@ -31,13 +31,13 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>修改离休员工信息</h5>
+						<h5>修改离休学生信息</h5>
 					</div>
 					<div class="ibox-content">
 						<% History history = (History)request.getAttribute("history"); %>
 						<form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/history/<%=history.getId() %>/update.do">
 							<div class="form-group">
-								<label class="col-sm-3 control-label">工号</label>
+								<label class="col-sm-3 control-label">学号</label>
 								<div class="col-sm-7">
 									<input type="text" class="form-control" name="personnelNumber" value="<%=history.getPersonnelNumber() %>" readonly="readonly">
 								</div>

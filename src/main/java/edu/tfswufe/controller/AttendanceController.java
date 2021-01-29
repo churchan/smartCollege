@@ -38,7 +38,7 @@ public class AttendanceController {
 
 	@RequestMapping("/{personnelNumber}/oneself.do")
 	public String select(Model model, @PathVariable Integer personnelNumber){
-		List<Attendance> list = attendanceService.selectBypersonnel(personnelNumber);
+		List<Attendance> list = attendanceService.selectByPersonnel(personnelNumber);
 		model.addAttribute("aList",list);
 		return "admin/oneself_attendance";
 	}

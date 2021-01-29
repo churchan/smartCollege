@@ -58,7 +58,7 @@ public class OvertimeService implements IService<Overtime>{
 	}
 
 
-	public Page<Overtime> selectBypersonnel(int pageNo, Integer personnelNumber) {
+	public Page<Overtime> selectByPersonnel(int pageNo, Integer personnelNumber) {
 		Page<Overtime> page = new Page<Overtime>(pageNo, 4, "id");
 		//是否为升序 ASC（ 默认： true ）
 		page.setAsc(false);
